@@ -6,6 +6,8 @@
 mpiexec
 conj_grad_bin.c
 test
+programdb
+program
 
 
 # Libraries
