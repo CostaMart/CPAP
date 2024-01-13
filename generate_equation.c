@@ -28,11 +28,6 @@ bool isPositiveSymmetric(double **matrix, int n)
             }
         }
     }
-
-    // TODO: Verifica che tutti gli autovalori siano positivi.
-    // Questo è un problema più complesso che richiede la decomposizione
-    // in autovalori di una matrice, che va oltre il codice di base in C.
-
     return true;
 }
 

@@ -21,6 +21,7 @@
  *                definition of residual.
  *				6. if debug compiled a file name 4compute  will be created. It contains
  *				the system to be solved. It can be used to check the result with wolframalpha.
+
  * Algorithm:  The matrix A's initially read and parsed into an one-dimensional
  *             array; the right hand side vector b is stored in an array as
  *             well. After some preparation work of allocating memory and
@@ -40,6 +41,14 @@
 #include "timer.h"
 #include "generate_equation.h"
 
+/**
+ * Calculates the dot product of two arrays.
+ *
+ * @param a The first array.
+ * @param b The second array.
+ * @param size The size of the arrays.
+ * @return The dot product of the two arrays.
+ */
 double dotProduct(double *a, double *b, int size)
 {
 	double sum = 0.0;
@@ -53,6 +62,15 @@ double dotProduct(double *a, double *b, int size)
 	return sum;
 }
 
+/**
+ * Multiplies each element of a vector by a scalar value.
+ *
+ * @param dest The destination vector where the result will be stored.
+ * @param v The input vector to be multiplied.
+ * @param s The scalar value to multiply each element of the vector by.
+ * @param size The size of the vector.
+ * @return The destination vector with the scalar-vector product.
+ */
 double *scalarVector(double *dest, double *v, double s, int size)
 {
 	// printf("== Begin: scalar vector product ==");
@@ -65,6 +83,15 @@ double *scalarVector(double *dest, double *v, double s, int size)
 	return dest;
 }
 
+/**
+ * Adds two vectors element-wise and stores the result in the destination vector.
+ *
+ * @param dest The destination vector where the result will be stored.
+ * @param a The first input vector.
+ * @param b The second input vector.
+ * @param size The size of the vectors.
+ * @return The destination vector with the element-wise sum of the input vectors.
+ */
 double *vectorAdd(double *dest, double *a, double *b, int size)
 {
 	// printf("== Begin: vector adding vector ==");
@@ -77,6 +104,15 @@ double *vectorAdd(double *dest, double *a, double *b, int size)
 	return dest;
 }
 
+/**
+ * Subtracts two vectors element-wise and stores the result in the destination vector.
+ *
+ * @param dest The destination vector to store the result.
+ * @param a The first vector.
+ * @param b The second vector.
+ * @param size The size of the vectors.
+ * @return The destination vector with the subtracted elements.
+ */
 double *vectorSubtract(double *dest, double *a, double *b, int size)
 {
 	// printf("== Begin: vector subtracting vector ==");
@@ -89,6 +125,17 @@ double *vectorSubtract(double *dest, double *a, double *b, int size)
 	return dest;
 }
 
+/**
+ * Performs matrix-vector multiplication.
+ *
+ * This function multiplies a matrix by a vector and stores the result in the destination array.
+ *
+ * @param dest   The destination array to store the result.
+ * @param matrix The matrix to be multiplied.
+ * @param v      The vector to be multiplied.
+ * @param size   The size of the matrix and vector.
+ * @return       The destination array containing the result of the multiplication.
+ */
 double *matrixVector(double *dest, double *matrix, double *v, int size)
 {
 	/* The Cross Product */
@@ -106,6 +153,15 @@ double *matrixVector(double *dest, double *matrix, double *v, int size)
 	return dest;
 }
 
+/**
+ * @brief Assigns the elements of one array to another array.
+ *
+ * This function copies the elements from array 'b' to array 'a' of size 'size'.
+ *
+ * @param a Pointer to the destination array.
+ * @param b Pointer to the source array.
+ * @param size The number of elements to copy.
+ */
 void assignVector(double *a, double *b, int size)
 {
 	/* Essentially does the same job as memcpy. */
@@ -116,6 +172,22 @@ void assignVector(double *a, double *b, int size)
 	}
 }
 
+/**
+ * @file conj_grad.c
+ * @brief Conjugate Gradient Solver
+ *
+ * This program solves a linear system of equations using the Conjugate Gradient method.
+ * It takes command line arguments for the dimension of the matrix, tolerance, maximum iterations,
+ * and an optional argument to suppress output.
+ *
+ * The program generates a random linear system, reads the matrix and right-hand side vector from file,
+ * and performs the Conjugate Gradient iterations until the tolerance is reached or the maximum iterations
+ * are exceeded. The solution vector is then printed.
+ *
+ * @param argc The number of command line arguments
+ * @param argv An array of strings containing the command line arguments
+ * @return 0 if the program executed successfully, 1 otherwise
+ */
 int main(int argc, char **argv)
 {
 	int i, /*j,*/ k, order, max_iterations, suppress_output;
