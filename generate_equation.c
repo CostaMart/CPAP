@@ -100,6 +100,7 @@ double *generateRandomLinearSystem(int order)
             AT[j][i] = random;
         }
     }
+
 #ifdef DEBUG
     for (int i = 0; i < order; i++)
     {
@@ -165,21 +166,21 @@ double *generateRandomLinearSystem(int order)
 /**
  * Generates a random solution vector.
  *
- * @param lunghezza The length of the solution vector.
+ * @param length The length of the solution vector.
  * @return The generated solution vector.
  */
-double *solutionVector(int lunghezza)
+double *solutionVector(int length)
 {
     // Generate the solution vector B
-    double *B = malloc(lunghezza * sizeof(double));
-    for (int i = 0; i < lunghezza; i++)
+    double *B = malloc(length * sizeof(double));
+    for (int i = 0; i < length; i++)
     {
         B[i] = (double)rand() / RAND_MAX;
     }
 
 #ifdef DEBUG
     printf("\n vettore soluzioni: \n[");
-    for (int i = 0; i < lunghezza; i++)
+    for (int i = 0; i < length; i++)
     {
         printf("%f, ", B[i]);
     }
