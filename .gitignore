@@ -8,7 +8,7 @@ conj_grad_bin.c
 test
 programdb
 program
-
+4compute.txt
 
 # Libraries
 *.lib
