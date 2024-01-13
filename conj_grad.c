@@ -19,10 +19,8 @@
  *                method, and
  *             5. The norm of the residual calculated directly from the
  *                definition of residual.
- *
-				6. if debug compiled a file name 4compute  will be created. It contains
- *				the system to be solved. Is is formatted in online. If the system is not too big you can use it
- *				to check the solution in wolframalpha.
+ *				6. if debug compiled a file name 4compute  will be created. It contains
+ *				the system to be solved. It can be used to check the result with wolframalpha.
  * Algorithm:  The matrix A's initially read and parsed into an one-dimensional
  *             array; the right hand side vector b is stored in an array as
  *             well. After some preparation work of allocating memory and
@@ -42,132 +40,6 @@
 #include "timer.h"
 #include "generate_equation.h"
 
-/**
- * Calculates the dot product of two vectors.
- *
- * @param a     Pointer to the first vector.
- * @param b     Pointer to the second vector.
- * @param size  Size of the vectors.
- * @return      The dot product of the two vectors.
- */
-double dotProduct(double *a, double *b, int size)
-{
-	double sum = 0.0;
-	int i;
-	for (i = 0; i < size; i++)
-	{
-		sum += (a[i] * b[i]);
-	}
-	return sum;
-}
-
-/**
- * Multiplies a vector by a scalar.
- *
- * @param dest  Pointer to the destination vector.
- * @param v     Pointer to the input vector.
- * @param s     Scalar value.
- * @param size  Size of the vectors.
- * @return      Pointer to the destination vector.
- */
-double *scalarVector(double *dest, double *v, double s, int size)
-{
-	int i;
-	for (i = 0; i < size; i++)
-	{
-		dest[i] = s * v[i];
-	}
-	return dest;
-}
-
-/**
- * Adds two vectors element-wise.
- *
- * @param dest  Pointer to the destination vector.
- * @param a     Pointer to the first vector.
- * @param b     Pointer to the second vector.
- * @param size  Size of the vectors.
- * @return      Pointer to the destination vector.
- */
-double *vectorAdd(double *dest, double *a, double *b, int size)
-{
-	int i;
-	for (i = 0; i < size; i++)
-	{
-		dest[i] = a[i] + b[i];
-	}
-	return dest;
-}
-
-/**
- * Subtracts two vectors element-wise.
- *
- * @param dest  Pointer to the destination vector.
- * @param a     Pointer to the first vector.
- * @param b     Pointer to the second vector.
- * @param size  Size of the vectors.
- * @return      Pointer to the destination vector.
- */
-double *vectorSubtract(double *dest, double *a, double *b, int size)
-{
-	int i;
-	for (i = 0; i < size; i++)
-	{
-		dest[i] = a[i] - b[i];
-	}
-	return dest;
-}
-
-/**
- * Multiplies a matrix by a vector.
- *
- * @param dest      Pointer to the destination vector.
- * @param matrix    Pointer to the matrix.
- * @param v         Pointer to the input vector.
- * @param size      Size of the matrix and vector.
- * @return          Pointer to the destination vector.
- */
-double *matrixVector(double *dest, double *matrix, double *v, int size)
-{
-	int i, j;
-	for (i = 0; i < size; i++)
-	{
-		dest[i] = 0.0;
-		for (j = 0; j < size; j++)
-		{
-			dest[i] += matrix[i * size + j] * v[j];
-		}
-	}
-	return dest;
-}
-
-/**
- * Copies the values from one vector to another.
- *
- * @param a     Pointer to the destination vector.
- * @param b     Pointer to the source vector.
- * @param size  Size of the vectors.
- */
-void assignVector(double *a, double *b, int size)
-{
-	int i;
-	for (i = 0; i < size; i++)
-	{
-		a[i] = b[i];
-	}
-}
-
-/**
- * Main function.
- *
- * @param argc  Number of command line arguments.
- * @param argv  Array of command line arguments.
- * @return      Exit status of the program.
- */
-int main(int argc, char **argv)
-{
-	// ...
-}
 double dotProduct(double *a, double *b, int size)
 {
 	double sum = 0.0;
