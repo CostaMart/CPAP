@@ -8,6 +8,13 @@
 #include "generate_equation.h"
 #include <stdbool.h>
 
+/**
+ * Checks if a given matrix is positive symmetric.
+ *
+ * @param matrix The matrix to be checked.
+ * @param n The size of the matrix.
+ * @return True if the matrix is positive symmetric, false otherwise.
+ */
 bool isPositiveSymmetric(double **matrix, int n)
 {
     // Verifica la simmetria
@@ -29,7 +36,14 @@ bool isPositiveSymmetric(double **matrix, int n)
     return true;
 }
 
-// ---------- Calcola la matrice media
+/**
+ * Generates a medium matrix by averaging the elements of two input matrices and adding the order to the diagonal.
+ *
+ * @param m1 The first input matrix.
+ * @param m2 The second input matrix.
+ * @param order The order of the matrices.
+ * @return The resulting medium matrix.
+ */
 double **mediumMatrix(double **m1, double **m2, int order)
 {
     double **result = malloc(order * sizeof(double *));
@@ -55,7 +69,12 @@ double **mediumMatrix(double **m1, double **m2, int order)
     return result;
 }
 
-//-------- genera un sistema lienare con matrice dei coefficienti simmetrica, così da poter applicare il gradiente coniugato
+/**
+ * Generates a random linear system of equations.
+ *
+ * @param order The order of the linear system.
+ * @return A pointer to the generated linear system.
+ */
 double *generateRandomLinearSystem(int order)
 {
     srand(time(NULL));
@@ -143,21 +162,28 @@ double *generateRandomLinearSystem(int order)
     return toreturn;
 }
 
-// ------ genera un vettore di soluzioni randomico
+/**
+ * Generates a random solution vector.
+ *
+ * @param lunghezza The length of the solution vector.
+ * @return The generated solution vector.
+ */
 double *solutionVector(int lunghezza)
 {
-    // abbiamo la matrice ora generiamo un b
+    // Generate the solution vector B
     double *B = malloc(lunghezza * sizeof(double));
     for (int i = 0; i < lunghezza; i++)
     {
         B[i] = (double)rand() / RAND_MAX;
     }
 
+#ifdef DEBUG
     printf("\n vettore soluzioni: \n[");
     for (int i = 0; i < lunghezza; i++)
     {
         printf("%f, ", B[i]);
     }
     printf("]\n");
+#endif
     return B;
 }
